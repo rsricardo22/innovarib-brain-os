@@ -1,0 +1,11 @@
+spring:
+  datasource:
+    url: ${DATABASE_URL:jdbc:postgresql://localhost:5432/brainos}
+    username: ${DATABASE_USERNAME:brainos}
+    password: ${DATABASE_PASSWORD:brainos}
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    open-in-view: false
+  flyway:
+    enabled: true
