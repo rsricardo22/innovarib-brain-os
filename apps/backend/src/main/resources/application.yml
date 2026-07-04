@@ -1,0 +1,19 @@
+spring:
+  application:
+    name: innovarib-brain-os
+  datasource:
+    url: ${SPRING_DATASOURCE_URL:jdbc:h2:mem:brainos;MODE=PostgreSQL;DATABASE_TO_LOWER=TRUE}
+    username: ${SPRING_DATASOURCE_USERNAME:sa}
+    password: ${SPRING_DATASOURCE_PASSWORD:}
+  jpa:
+    hibernate:
+      ddl-auto: update
+    open-in-view: false
+  rabbitmq:
+    host: ${SPRING_RABBITMQ_HOST:localhost}
+  data:
+    redis:
+      host: ${SPRING_DATA_REDIS_HOST:localhost}
+brainos:
+  security:
+    dev-mode: ${BRAINOS_SECURITY_DEV_MODE:true}
