@@ -1,0 +1,12 @@
+# Build outputs
+apps/backend/target/
+apps/frontend/dist/
+apps/frontend/.angular/
+
+# Dependencies
+apps/frontend/node_modules/
+
+# IDE / OS
+.idea/
+.vscode/
+.DS_Store
