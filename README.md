@@ -1,33 +1,87 @@
+# Innovarib Brain OS
 
-Lee el README.md de este repositorio.
+Monorepo base para **Innovarib Brain / Business Agent OS**, orientado a un MVP multi-tenant donde la IA ayuda a redactar y ejecutar tareas bajo aprobación humana.
 
-Con base en la visión de Innovarib Brain / Business Agent OS, genera la primera versión del proyecto.
+## Estructura del repositorio
 
-Prioriza un MVP funcional y vendible, no una arquitectura gigante imposible de ejecutar.
+```text
+/backend
+  /auth-service
+  /tenant-service
+  /brain-service
+  /document-service
+  /crm-service
+  /campaign-service
+  /agent-service
+  /audit-service
+  /notification-service
+/frontend
+/docs
+/infra
+/scripts
+```
 
-Entrega en el repositorio:
+## Backend
 
-1. /docs/architecture.md
-2. /docs/database-design.md
-3. /docs/api-contracts.md
-4. /docs/rabbitmq-events.md
-5. /docs/security-multitenant.md
-6. /docs/rag-memory-strategy.md
-7. /docs/model-router.md
-8. /docs/tool-router.md
-9. /docs/roadmap.md
-10. docker-compose.yml inicial
-11. estructura base de monorepo
-12. backend Spring Boot inicial
-13. frontend Angular inicial
-14. README con instrucciones de ejecución
+La carpeta `backend` contiene módulos preparados para evolucionar a servicios independientes cuando el MVP lo requiera:
 
-Reglas:
+- `auth-service`: autenticación, autorización y sesiones.
+- `tenant-service`: gestión multi-tenant, organizaciones y configuración por cliente.
+- `brain-service`: orquestación de IA, flujos de aprobación humana y memoria/RAG.
+- `document-service`: ingestión, almacenamiento y procesamiento de documentos.
+- `crm-service`: contactos, empresas, oportunidades y actividad comercial.
+- `campaign-service`: campañas, mensajes y seguimiento.
+- `agent-service`: definición y ejecución controlada de agentes/herramientas.
+- `audit-service`: trazabilidad, logs de seguridad y eventos de cumplimiento.
+- `notification-service`: notificaciones internas y externas.
 
-- Usar Java 17, Spring Boot 3, Angular 18/19, PostgreSQL, Redis, RabbitMQ y MinIO.
-- Diseñar multi-tenant desde el inicio.
-- MVP nivel 2: IA redacta y humano aprueba.
-- No implementar todos los microservicios todavía; agrupar por módulos para el MVP.
-- Crear una arquitectura preparada para separar microservicios después.
-- Incluir buenas prácticas de seguridad, auditoría y permisos.
-- Crear código inicial ejecutable con Docker Compose.
+> Nota: todavía no se implementa lógica de negocio avanzada. Esta tarea solo establece la estructura base del monorepo.
+
+## Frontend
+
+La carpeta `frontend` queda reservada para la aplicación web Angular del producto.
+
+## Documentación
+
+La carpeta `docs` centralizará decisiones de arquitectura, contratos de API, seguridad multi-tenant, estrategia RAG/memoria y roadmap.
+
+## Infraestructura
+
+La carpeta `infra` almacenará manifiestos, configuración de despliegue, archivos Docker/Kubernetes/Terraform y otros recursos operativos.
+
+## Scripts
+
+La carpeta `scripts` almacenará utilidades de desarrollo, automatización local, migraciones auxiliares y tareas CI/CD.
+
+## Requisitos previstos
+
+- Java 17
+- Spring Boot 3
+- Node.js LTS
+- Angular 18/19
+- PostgreSQL
+- Redis
+- RabbitMQ
+- MinIO
+- Docker y Docker Compose
+
+## Ejecución local
+
+En esta fase inicial no hay servicios ejecutables todavía. Una vez agregados los proyectos backend/frontend y `docker-compose.yml`, la ejecución local esperada será:
+
+```bash
+docker compose up --build
+```
+
+Para validar la estructura actual:
+
+```bash
+find backend frontend docs infra scripts -maxdepth 2 -type d | sort
+```
+
+## Estado actual
+
+- Monorepo inicial creado.
+- Módulos backend definidos como carpetas base.
+- Carpetas `frontend`, `docs`, `infra` y `scripts` preparadas.
+- Sin lógica avanzada ni servicios productivos implementados todavía.
